@@ -1,0 +1,89 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Server", "Relax.Server\Relax.Server.csproj", "{61068D78-4ACA-4C54-B4A9-128C462EC87A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Models", "Relax.Models\Relax.Models.csproj", "{99A8055B-6EB7-4C21-8490-2C3BDA27D77B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{E31CA159-606B-4E82-B4AC-1C0543CF3833}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Locations", "Locations", "{34DFDAA9-90EB-4078-AE3D-55B2CDB7334B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Locations.Models", "..\Relax.Locations\Relax.Locations.Models\Relax.Locations.Models.csproj", "{624AEB28-372A-4B23-8126-EC8D43B60487}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relas.Localtions.Client", "..\Relax.Locations\Relas.Localtions.Client\Relas.Localtions.Client.csproj", "{B0DD8E0E-9E32-4BBA-9E3E-D80014794D23}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalavarda.Primitives", "..\..\..\Kalavarda\Primitives\Kalavarda.Primitives\Kalavarda.Primitives.csproj", "{C05ED069-C59F-47CD-BA4A-B8397B600651}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Server.Client", "Relax.Server.Client\Relax.Server.Client.csproj", "{A37FACDB-B8AC-4CF6-827C-C85A5B58416F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Web", "..\..\Kalantyr.Libs\Kalantyr.Web\Kalantyr.Web.csproj", "{C500BF3C-F098-49F7-82BF-D53F23C38333}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{60CAC86F-8165-4528-9DE1-9663879C8953}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Auth.Models", "..\..\Kalantyr.Auth\Kalantyr.Auth.Models\Kalantyr.Auth.Models.csproj", "{F9B5C078-7B2F-414C-85EE-31E6A1943881}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Auth.Client", "..\..\Kalantyr.Auth\Kalantyr.Auth.Client\Kalantyr.Auth.Client.csproj", "{6D0CA4C0-D998-4D51-B41D-2A4C767BC1C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61068D78-4ACA-4C54-B4A9-128C462EC87A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61068D78-4ACA-4C54-B4A9-128C462EC87A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61068D78-4ACA-4C54-B4A9-128C462EC87A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61068D78-4ACA-4C54-B4A9-128C462EC87A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A8055B-6EB7-4C21-8490-2C3BDA27D77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A8055B-6EB7-4C21-8490-2C3BDA27D77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A8055B-6EB7-4C21-8490-2C3BDA27D77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A8055B-6EB7-4C21-8490-2C3BDA27D77B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624AEB28-372A-4B23-8126-EC8D43B60487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624AEB28-372A-4B23-8126-EC8D43B60487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624AEB28-372A-4B23-8126-EC8D43B60487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624AEB28-372A-4B23-8126-EC8D43B60487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0DD8E0E-9E32-4BBA-9E3E-D80014794D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0DD8E0E-9E32-4BBA-9E3E-D80014794D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0DD8E0E-9E32-4BBA-9E3E-D80014794D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0DD8E0E-9E32-4BBA-9E3E-D80014794D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C05ED069-C59F-47CD-BA4A-B8397B600651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C05ED069-C59F-47CD-BA4A-B8397B600651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C05ED069-C59F-47CD-BA4A-B8397B600651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C05ED069-C59F-47CD-BA4A-B8397B600651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A37FACDB-B8AC-4CF6-827C-C85A5B58416F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A37FACDB-B8AC-4CF6-827C-C85A5B58416F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A37FACDB-B8AC-4CF6-827C-C85A5B58416F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A37FACDB-B8AC-4CF6-827C-C85A5B58416F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C500BF3C-F098-49F7-82BF-D53F23C38333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C500BF3C-F098-49F7-82BF-D53F23C38333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C500BF3C-F098-49F7-82BF-D53F23C38333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C500BF3C-F098-49F7-82BF-D53F23C38333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9B5C078-7B2F-414C-85EE-31E6A1943881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9B5C078-7B2F-414C-85EE-31E6A1943881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9B5C078-7B2F-414C-85EE-31E6A1943881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9B5C078-7B2F-414C-85EE-31E6A1943881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D0CA4C0-D998-4D51-B41D-2A4C767BC1C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D0CA4C0-D998-4D51-B41D-2A4C767BC1C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D0CA4C0-D998-4D51-B41D-2A4C767BC1C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D0CA4C0-D998-4D51-B41D-2A4C767BC1C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{34DFDAA9-90EB-4078-AE3D-55B2CDB7334B} = {E31CA159-606B-4E82-B4AC-1C0543CF3833}
+		{624AEB28-372A-4B23-8126-EC8D43B60487} = {34DFDAA9-90EB-4078-AE3D-55B2CDB7334B}
+		{B0DD8E0E-9E32-4BBA-9E3E-D80014794D23} = {34DFDAA9-90EB-4078-AE3D-55B2CDB7334B}
+		{C05ED069-C59F-47CD-BA4A-B8397B600651} = {E31CA159-606B-4E82-B4AC-1C0543CF3833}
+		{C500BF3C-F098-49F7-82BF-D53F23C38333} = {E31CA159-606B-4E82-B4AC-1C0543CF3833}
+		{60CAC86F-8165-4528-9DE1-9663879C8953} = {E31CA159-606B-4E82-B4AC-1C0543CF3833}
+		{F9B5C078-7B2F-414C-85EE-31E6A1943881} = {60CAC86F-8165-4528-9DE1-9663879C8953}
+		{6D0CA4C0-D998-4D51-B41D-2A4C767BC1C1} = {60CAC86F-8165-4528-9DE1-9663879C8953}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBB22184-8427-46E0-8B73-460E35D4B135}
+	EndGlobalSection
+EndGlobal

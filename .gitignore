@@ -1,0 +1,7 @@
+/Relax.Server/bin
+/Relax.Server/obj
+/.vs
+/Relax.Models/bin
+/Relax.Models/obj
+/Relax.Server.Client/bin
+/Relax.Server.Client/obj
