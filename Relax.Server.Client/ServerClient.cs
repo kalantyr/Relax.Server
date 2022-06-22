@@ -1,33 +1,61 @@
-﻿using Kalantyr.Web;
-using Kalantyr.Web.Impl;
+﻿using System.Net;
+using System.Net.Sockets;
+using Kalantyr.Web;
+using Relax.Models.Commands;
 
 namespace Relax.Server.Client
 {
-    public class ServerClient : HttpClientBase, IServerClient
+    public class ServerClient : IServerClient
     {
-        private readonly TokenRequestEnricher _requestEnricher;
+        private readonly IPEndPoint _serverEndPoint;
 
-        public ServerClient(IHttpClientFactory httpClientFactory) : base(httpClientFactory, new TokenRequestEnricher())
+        public ServerClient(IPEndPoint serverEndPoint)
         {
-            _requestEnricher = (TokenRequestEnricher)RequestEnricher;
+            _serverEndPoint = serverEndPoint ?? throw new ArgumentNullException(nameof(serverEndPoint));
         }
 
         public async Task<ResultDto<bool>> ConnectAsync(uint characterId, string token, CancellationToken cancellationToken)
         {
-            _requestEnricher.Token = token;
-            return await Post<ResultDto<bool>>("/characters/connect?characterId=" + characterId, null, cancellationToken);
+            using var udpClient = new UdpClient();
+            try
+            {
+                var cmd = new ConnectCommand(characterId, token);
+                udpClient.Connect(_serverEndPoint);
+                await udpClient.SendAsync(cmd.Serialize(), cancellationToken);
+            }
+            finally
+            {
+                udpClient.Close();
+            }
+
+            return new ResultDto<bool> { Result = true };
         }
 
         public async Task<ResultDto<bool>> DisconnectAsync(string token, CancellationToken cancellationToken)
         {
-            _requestEnricher.Token = token;
-            return await Post<ResultDto<bool>>("/characters/disconnect", null, cancellationToken);
+            using var udpClient = new UdpClient();
+            try
+            {
+                var cmd = new DisconnectCommand(token);
+                udpClient.Connect(_serverEndPoint);
+                await udpClient.SendAsync(cmd.Serialize(), cancellationToken);
+            }
+            finally
+            {
+                udpClient.Close();
+            }
+
+            return new ResultDto<bool> { Result = true };
         }
 
         public async Task<ResultDto<uint[]>> GetOnlineCharacterIdsAsync(string token, CancellationToken cancellationToken)
         {
-            _requestEnricher.Token = token;
-            return await Get<ResultDto<uint[]>>("/characters/onlineCharacterIds", cancellationToken);
+            return new ResultDto<uint[]> { Result = Array.Empty<uint>() };
+
+            // TODO
+
+            //_requestEnricher.Token = token;
+            //return await Get<ResultDto<uint[]>>("/characters/onlineCharacterIds", cancellationToken);
         }
     }
 }

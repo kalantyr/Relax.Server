@@ -7,3 +7,6 @@
 /Relax.Server.Client/obj
 /Relax.Server/*.user
 /Relax.Server/Properties/PublishProfiles/*.user
+/Relax.Server.Tests/bin
+/Relax.Server.Tests/obj
+/*.user
