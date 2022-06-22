@@ -23,5 +23,11 @@ namespace Relax.Server.Client
             _requestEnricher.Token = token;
             return await Post<ResultDto<bool>>("/characters/disconnect", null, cancellationToken);
         }
+
+        public async Task<ResultDto<uint[]>> GetOnlineCharacterIdsAsync(string token, CancellationToken cancellationToken)
+        {
+            _requestEnricher.Token = token;
+            return await Get<ResultDto<uint[]>>("/characters/onlineCharacterIds", cancellationToken);
+        }
     }
 }
