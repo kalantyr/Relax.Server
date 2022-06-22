@@ -27,9 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Auth.Client", "..\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Primitives", "Primitives", "{4BBC3898-98A2-4269-B599-016FFF67AAD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Server", "Relax.Server\Relax.Server.csproj", "{787DD187-FCCE-442F-A02C-43AC980A715F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Server", "Relax.Server\Relax.Server.csproj", "{787DD187-FCCE-442F-A02C-43AC980A715F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Server.Tests", "Relax.Server.Tests\Relax.Server.Tests.csproj", "{56DA36B7-84C8-4A5C-85F1-8B9995C6B7C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Server.Tests", "Relax.Server.Tests\Relax.Server.Tests.csproj", "{56DA36B7-84C8-4A5C-85F1-8B9995C6B7C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Characters", "Characters", "{2676FA47-9989-4DE8-96D7-97202B879F0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Characters.Client", "..\Relax.Characters\Relax.Characters.Client\Relax.Characters.Client.csproj", "{96F22323-757E-4E1A-A1E5-D889E08D6769}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +81,10 @@ Global
 		{56DA36B7-84C8-4A5C-85F1-8B9995C6B7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56DA36B7-84C8-4A5C-85F1-8B9995C6B7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56DA36B7-84C8-4A5C-85F1-8B9995C6B7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96F22323-757E-4E1A-A1E5-D889E08D6769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96F22323-757E-4E1A-A1E5-D889E08D6769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96F22323-757E-4E1A-A1E5-D889E08D6769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96F22323-757E-4E1A-A1E5-D889E08D6769}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +99,8 @@ Global
 		{F9B5C078-7B2F-414C-85EE-31E6A1943881} = {60CAC86F-8165-4528-9DE1-9663879C8953}
 		{6D0CA4C0-D998-4D51-B41D-2A4C767BC1C1} = {60CAC86F-8165-4528-9DE1-9663879C8953}
 		{4BBC3898-98A2-4269-B599-016FFF67AAD9} = {E31CA159-606B-4E82-B4AC-1C0543CF3833}
+		{2676FA47-9989-4DE8-96D7-97202B879F0D} = {E31CA159-606B-4E82-B4AC-1C0543CF3833}
+		{96F22323-757E-4E1A-A1E5-D889E08D6769} = {2676FA47-9989-4DE8-96D7-97202B879F0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FBB22184-8427-46E0-8B73-460E35D4B135}

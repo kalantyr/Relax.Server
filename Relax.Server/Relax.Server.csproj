@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Kalantyr.Auth\Kalantyr.Auth.Client\Kalantyr.Auth.Client.csproj" />
+    <ProjectReference Include="..\..\Relax.Characters\Relax.Characters.Client\Relax.Characters.Client.csproj" />
     <ProjectReference Include="..\Relax.Models\Relax.Models.csproj" />
   </ItemGroup>
 

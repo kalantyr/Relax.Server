@@ -2,5 +2,6 @@
 {
     public class ServiceConfig
     {
+        public string CharactersUrl { get; set; }
     }
 }
