@@ -31,25 +31,12 @@
 
     public class DisconnectCommand: CommandBase
     {
-        public string UserToken { get; private set; }
-
-        internal DisconnectCommand()
-        {
-        }
-
-        public DisconnectCommand(string userToken): this()
-        {
-            UserToken = userToken ?? throw new ArgumentNullException(nameof(userToken));
-        }
-
         protected override void Serialize(BinaryWriter writer)
         {
-            writer.Write(UserToken);
         }
 
         protected override void Deserialize(BinaryReader reader)
         {
-            UserToken = reader.ReadString();
         }
     }
 }

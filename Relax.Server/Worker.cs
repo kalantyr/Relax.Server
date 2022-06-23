@@ -8,15 +8,14 @@ namespace Relax.Server
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        private readonly CharactersRegistry _charactersRegistry;
         private readonly UdpClient _udpClient;
-        private readonly CommandExecutorFactory _commandExecutorFactory = new();
+        private readonly CommandExecutorFactory _commandExecutorFactory;
 
         public Worker(ILogger<Worker> logger, CharactersRegistry charactersRegistry)
         {
             _logger = logger;
-            _charactersRegistry = charactersRegistry ?? throw new ArgumentNullException(nameof(charactersRegistry));
             _udpClient = new UdpClient(new IPEndPoint(IPAddress.Any, 12345));
+            _commandExecutorFactory = new CommandExecutorFactory(charactersRegistry);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -27,19 +26,8 @@ namespace Relax.Server
                 {
                     var receiveResult = await _udpClient.ReceiveAsync(stoppingToken);
                     var command = CommandBase.Deserialize(receiveResult.Buffer);
-
-                    if (command is ConnectCommand connectCommand)
-                    {
-                        var connectTask = _charactersRegistry.ConnectAsync(connectCommand, receiveResult.RemoteEndPoint);
-                        connectTask.Start();
-                    }
-                    else if (command is DisconnectCommand disconnectCommand)
-                        _charactersRegistry.Disconnect(disconnectCommand);
-                    else
-                    {
-                        var commandExecutor = _commandExecutorFactory.Create(command);
-                        commandExecutor.Execute(command);
-                    }
+                    var commandExecutor = _commandExecutorFactory.Create(command, receiveResult.RemoteEndPoint);
+                    commandExecutor.Execute();
                 }
             }
             finally

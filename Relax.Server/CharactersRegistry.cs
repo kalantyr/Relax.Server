@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using Kalantyr.Auth.Client;
 using Relax.Characters.Client;
 using Relax.Models.Commands;
@@ -37,11 +38,18 @@ namespace Relax.Server
 
             lock(_entries)
                 _entries.Add(new RegistryEntry(userId, connectCommand.CharacterId, clientEndPoint));
+
+            Debug.WriteLine($"Пользователь {userId} подключился");
         }
 
-        public void Disconnect(DisconnectCommand disconnectCommand)
+        public void Disconnect(DisconnectCommand disconnectCommand, IPEndPoint clientEndPoint)
         {
-            throw new NotImplementedException();
+            lock (_entries)
+            {
+                var entry = _entries.FirstOrDefault(e => e.EndPoint.Equals(clientEndPoint));
+                Debug.WriteLine($"Пользователь {entry.UserId} отключился");
+                _entries.Remove(entry);
+            }
         }
 
         public class RegistryEntry

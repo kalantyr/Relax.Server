@@ -19,10 +19,9 @@ namespace Relax.Server.Tests.Models.Commands
         [Test]
         public void DisonnectCommand_Test()
         {
-            var command = new DisconnectCommand("dghfsdghasd");
+            var command = new DisconnectCommand();
             var data = command.Serialize();
             var command2 = (DisconnectCommand)CommandBase.Deserialize(data);
-            Assert.AreEqual(command.UserToken, command2.UserToken);
         }
 
         [Test]

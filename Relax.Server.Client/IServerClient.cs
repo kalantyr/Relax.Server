@@ -1,4 +1,5 @@
 ﻿using Kalantyr.Web;
+using Relax.Models.Commands;
 
 namespace Relax.Server.Client
 {
@@ -9,5 +10,7 @@ namespace Relax.Server.Client
         Task<ResultDto<bool>> DisconnectAsync(string token, CancellationToken cancellationToken);
 
         Task<ResultDto<uint[]>> GetOnlineCharacterIdsAsync(string token, CancellationToken cancellationToken);
+        
+        Task SendAsync(CommandBase command, CancellationToken cancellationToken);
     }
 }
