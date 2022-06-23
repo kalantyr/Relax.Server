@@ -11,30 +11,30 @@ namespace Relax.Server
         private readonly UdpClient _udpClient;
         private readonly CommandExecutorFactory _commandExecutorFactory;
 
-        public Worker(ILogger<Worker> logger, CharactersRegistry charactersRegistry)
+        public Worker(ILogger<Worker> logger, CharactersRegistry charactersRegistry, IClientSender clientSender)
         {
             _logger = logger;
             _udpClient = new UdpClient(new IPEndPoint(IPAddress.Any, 12345));
-            _commandExecutorFactory = new CommandExecutorFactory(charactersRegistry);
+            _commandExecutorFactory = new CommandExecutorFactory(charactersRegistry, clientSender);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            try
+            while (!stoppingToken.IsCancellationRequested)
             {
-                while (!stoppingToken.IsCancellationRequested)
-                {
-                    var receiveResult = await _udpClient.ReceiveAsync(stoppingToken);
-                    var command = CommandBase.Deserialize(receiveResult.Buffer);
-                    var commandExecutor = _commandExecutorFactory.Create(command, receiveResult.RemoteEndPoint);
-                    commandExecutor.Execute();
-                }
+                var receiveResult = await _udpClient.ReceiveAsync(stoppingToken);
+                var command = CommandBase.Deserialize(receiveResult.Buffer);
+                var commandExecutor = _commandExecutorFactory.Create(command, receiveResult.RemoteEndPoint);
+                commandExecutor.Execute();
             }
-            finally
-            {
-                _udpClient.Close();
-                _udpClient.Dispose();
-            }
+        }
+
+        public override Task StopAsync(CancellationToken cancellationToken)
+        {
+            _udpClient.Close();
+            _udpClient.Dispose();
+
+            return base.StopAsync(cancellationToken);
         }
     }
 }

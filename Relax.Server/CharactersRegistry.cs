@@ -12,6 +12,8 @@ namespace Relax.Server
         private readonly ICharactersReadonlyClient _charactersClient;
         private readonly ICollection<RegistryEntry> _entries = new List<RegistryEntry>();
 
+        public IEnumerable<RegistryEntry> Registry => _entries;
+
         public CharactersRegistry(IAppAuthClient authClient, ICharactersReadonlyClient charactersClient)
         {
             _authClient = authClient ?? throw new ArgumentNullException(nameof(authClient));
@@ -65,6 +67,15 @@ namespace Relax.Server
                 UserId = userId;
                 CharacterId = characterId;
                 EndPoint = endPoint;
+            }
+        }
+
+        public uint? GetCharacterId(IPEndPoint clientEndPoint)
+        {
+            lock (_entries)
+            {
+                var entry = _entries.FirstOrDefault(re => re.EndPoint.Equals(clientEndPoint));
+                return entry?.CharacterId;
             }
         }
     }

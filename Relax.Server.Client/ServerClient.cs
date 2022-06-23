@@ -8,6 +8,8 @@ namespace Relax.Server.Client
     public class ServerClient : IServerClient, IDisposable
     {
         private readonly Socket _socket;
+        private readonly UdpClient _udpListener;
+        private bool _isDisposing;
 
         public ServerClient(IPEndPoint serverEndPoint, int localUdpPort)
         {
@@ -15,19 +17,20 @@ namespace Relax.Server.Client
             var localEndpoint = new IPEndPoint(IPAddress.Loopback, localUdpPort);
             _socket.Bind(localEndpoint);
             _socket.Connect(serverEndPoint);
+
+            _udpListener = new UdpClient(new IPEndPoint(serverEndPoint.Address, localUdpPort + 1));
+            new Thread(Listen).Start();
         }
 
-        public async Task<ResultDto<bool>> ConnectAsync(uint characterId, string token, CancellationToken cancellationToken)
+        private void Listen()
         {
-            var cmd = new ConnectCommand(characterId, token);
-            await SendAsync(cmd, cancellationToken);
-            return new ResultDto<bool> { Result = true };
-        }
-
-        public async Task<ResultDto<bool>> DisconnectAsync(string token, CancellationToken cancellationToken)
-        {
-            await SendAsync(new DisconnectCommand(), cancellationToken);
-            return new ResultDto<bool> { Result = true };
+            while (!_isDisposing)
+            {
+                IPEndPoint serverEndPoint = null;
+                var data = _udpListener.Receive(ref serverEndPoint);
+                var command = CommandBase.Deserialize(data);
+                CommandReceived?.Invoke(command);
+            }
         }
 
         public async Task<ResultDto<uint[]>> GetOnlineCharacterIdsAsync(string token, CancellationToken cancellationToken)
@@ -49,8 +52,11 @@ namespace Relax.Server.Client
                 throw new Exception("Send error");
         }
 
+        public event Action<CommandBase> CommandReceived;
+
         public void Dispose()
         {
+            _isDisposing = true;
             if (_socket is { Connected: true })
             {
                 _socket.Disconnect(true);

@@ -18,6 +18,8 @@ var host = Host.CreateDefaultBuilder(args)
         
         services.AddSingleton<ICharactersReadonlyClient>(sp => new CharactersClient(sp.GetService<IHttpClientFactory>()));
 
+        services.AddSingleton<IClientSender>(new ClientSender());
+
         services.AddHostedService<Worker>();
 
         services.AddHttpClient<AuthClient>((sp, client) =>

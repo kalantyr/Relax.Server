@@ -40,6 +40,12 @@
                 case nameof(StopMoveCommand):
                     return new StopMoveCommand();
 
+                case nameof(CharacterOnlineEvent):
+                    return new CharacterOnlineEvent();
+
+                case nameof(CharacterOfflineEvent):
+                    return new CharacterOfflineEvent();
+
                 default:
                     throw new NotImplementedException(typeName);
             }
